@@ -5,6 +5,7 @@ The purpose of this repo is to attempt to simplify the mvc framework that was cr
 
 Important:: create a .htaccess file in /public/
 and copy the following:
+
     RewriteEngine On
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
