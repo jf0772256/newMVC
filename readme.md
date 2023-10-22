@@ -2,6 +2,8 @@
 
 The purpose of this repo is to attempt to simplify the mvc framework that was created earlier. 
 
+Requires: 
+PHP 8.2 or greater!
 
 Important:: create a .htaccess file in /public/
 and copy the following:
