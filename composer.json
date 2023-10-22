@@ -1,0 +1,17 @@
+{
+    "name": "jesse/simplified_mvc",
+    "description": "An attempt to simplify the mvc framework project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Jesse\\SimplifiedMVC\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jesse Fender",
+            "email": "jessefender@jessefender.com"
+        }
+    ],
+    "require": {}
+}
