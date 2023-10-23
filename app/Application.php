@@ -3,7 +3,7 @@
 	namespace Jesse\SimplifiedMVC;
 	
 	use Jesse\SimplifiedMVC\Database\Connection;
-	use Jesse\SimplifiedMVC\utilities\DotEnv;
+	use Jesse\SimplifiedMVC\Utilities\DotEnv;
 	
 	class Application
 	{

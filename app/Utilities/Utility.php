@@ -1,6 +1,6 @@
 <?php
 	
-	namespace Jesse\SimplifiedMVC\utilities;
+	namespace Jesse\SimplifiedMVC\Utilities;
 	
 	class Utility
 	{

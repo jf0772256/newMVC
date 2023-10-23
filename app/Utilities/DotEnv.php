@@ -1,6 +1,6 @@
 <?php
 	
-	namespace Jesse\SimplifiedMVC\utilities;
+	namespace Jesse\SimplifiedMVC\Utilities;
 	
 	final class DotEnv
 	{

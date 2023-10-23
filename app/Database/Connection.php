@@ -3,7 +3,7 @@
 	namespace Jesse\SimplifiedMVC\Database;
 	
 	use AllowDynamicProperties;
-	use Jesse\SimplifiedMVC\utilities\Utility;
+	use Jesse\SimplifiedMVC\Utilities\Utility;
 	use PDO;
 	use PDOStatement;
 	#[AllowDynamicProperties] class Connection extends DatabaseBase
