@@ -13,5 +13,9 @@
             "email": "jessefender@jessefender.com"
         }
     ],
-    "require": {}
+    "require": {
+	    "ext-pdo": "*",
+        "ext-zlib": "*",
+        "ext-openssl": "*"
+    }
 }
