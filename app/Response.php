@@ -17,7 +17,7 @@
 			if (!empty($errorTitle))
 			{
 				$this->errorTitles[(string)$error] = $errorTitle;
-				return;
+				return null;
 			}
 			if (!array_key_exists((string)$error, $this->errorTitles)) return "Error";
 			return $this->errorTitles[(string)$error];
