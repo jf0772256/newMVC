@@ -40,4 +40,17 @@
 			
 			$this->connection->connect();
 		}
+		
+		/**
+		 * Run the application and route any routes!
+		 * @return void
+		 */
+		function run () {
+			try {
+				echo $this->router->resolve();
+			} catch (\Exception $e) {
+				$this->response->statusCode($e->getCode());
+				echo "<h1>Page Not Found</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+			}
+		}
 	}
