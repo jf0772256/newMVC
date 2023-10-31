@@ -11,6 +11,9 @@
 		public static string $RootPath;
 		
 		public Connection $connection;
+		public Response $response;
+		public Request $request;
+		public Router $router;
 		
 		function __construct(array $config)
 		{
@@ -18,6 +21,9 @@
 			Application::$RootPath = $config['rootPath'];
 			DotEnv::load($config['envPath']);
 			$this->connect();
+			$this->response = new Response();
+			$this->request = new Request();
+			$this->router = new Router($this->request, $this->response);
 			// set the constant var $app to this instance
 			Application::$app = $this;
 		}
