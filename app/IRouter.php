@@ -2,7 +2,7 @@
 	
 	namespace Jesse\SimplifiedMVC;
 	
-	use http\Exception\InvalidArgumentException;
+	use InvalidArgumentException;
 	
 	class IRouter
 	{
