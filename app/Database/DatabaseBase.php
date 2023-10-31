@@ -48,7 +48,7 @@
 		 * @var string $type
 		 * @author Jesse Fender
 		 */
-		private string $type = 'mysql';
+		private string $type = 'pdo';
 		/**
 		 * PDO Connection options array, currently sets default returns as assoc arrays, can change or add other properties. Only use dby the PDODatabase
 		 * @var array $pdoOptions
