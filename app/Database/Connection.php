@@ -22,17 +22,19 @@
 		 * @param string      $sql    SQL statement to be prepared and ran
 		 * @param array|null  $params Parameters array to bind to the query through the statement object
 		 *
+		 * @see https://www.php.net/manual/en/pdostatement.fetchall.php
+		 *
 		 * ```php
-		 *  //after creating connection instance use query() on the Connection instance
-		 *  $db->("SELECT * FROM table")->get_results()->fetch_all(MYSQLI_ASSOC);
+		 *  // after creating connection instance use query() on the Connection instance
 		 *  // pdo uses by default the associative arrays for array returns
+		 *  $db->query("SELECT * FROM table")->fetch_all();
 		 *  // sqlite interface is technically a wrapped pdo connection, it uses a different sql syntax.
 		 * ```
 		 *
 		 * All queries are parametrised, and you can pass parameters to the query method using the params array:
 		 * ```php
 		 *  $id = 1;
-		 *  $db->query("SELECT * FROM table WHERE id=?", [$id])->get_results()->fetch_array(MYSQLI_ASSOC);
+		 *  $db->query("SELECT * FROM table WHERE id=?", [$id])->fetch();
 		 * ```
 		 *
 		 * The final parameter is not required and will be auto generated if not passed
