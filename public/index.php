@@ -13,8 +13,10 @@
 	
 	//	$data = Application::$app->connection->ExecuteQuery("SELECT 'Hello World! Using Static' as text_col", [])->fetchObject()->text_col;
 	//	echo "does this show: {$data}";
+	
 	$externalRouter = require_once '../routes/base.routes.php';
 	$app->router->use($externalRouter);
+	
 	// other routes maybe???
 	$app->router->get('/users', function()
 	{
