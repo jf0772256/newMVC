@@ -90,6 +90,29 @@
 				}
 				$body = array_merge($filtered_get, $filtered_post);
 			}
+			elseif ($this->contentType === "application/json" && !$this->isGet())
+			{
+				$body = json_decode(file_get_contents("php://input"), true);
+			}
+			elseif (!$this->overwrittenMethod && ($this->isDelete() || $this->isPatch() || $this->isPut() || $this->isUpdate()))
+			{
+				// read the body value.
+				$bodyData = file_get_contents("php://input");
+				// determine the content type (non-json as that's caught in if block above) then based on the content type process data into usable values
+				switch ($this->contentType)
+				{
+					case 'multipart/form-data': // this will be harder to parse due to the processing done for boundaries
+						// process the data
+						break;
+					case 'application/x-www-form-urlencoded': // most common, it's what gets passed with normal POST and GET requests
+						$toKVPairs = explode('&', $bodyData);
+						foreach ($toKVPairs as $key => $value) $body[$key] = urldecode($value);
+						break;
+					default:
+						throw new Exception("Unacceptable Content Type used OR data was malformed and unable to be processed", 400);
+				}
+			}
+			
 			return $body;
 		}
 		/**
