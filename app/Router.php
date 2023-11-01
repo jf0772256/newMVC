@@ -68,7 +68,14 @@
 			return $this;
 		}
 		
-		public function only($key) : ?self
+		/**
+		 * Applies a middleware to the last route added
+		 *
+		 * @param $key string Middleware key name
+		 *
+		 * @return $this
+		 */
+		public function only(string $key) : self
 		{
 			$this->middleware($key);
 			return $this;
