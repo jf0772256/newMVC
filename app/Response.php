@@ -5,6 +5,7 @@
 	class Response
 	{
 		private array $errorTitles = [
+			"400" => "400: Bad request, The server recieved malformed data in teh last request",
 			"403" => "403: You're Not Authorized",
 			"404" => "404: Page Not Found"
 		];
