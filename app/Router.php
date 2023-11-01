@@ -3,8 +3,8 @@
 	namespace Jesse\SimplifiedMVC;
 	
 	use Exception;
-	use \Jesse\SimplifiedMVC\exception\NotFound;
-	use Jesse\SimplifiedMVC\Utilities\Utility;
+	use Jesse\SimplifiedMVC\exception\NotFound;
+	use Jesse\SimplifiedMVC\Middleware\Middleware;
 	
 	class Router extends IRouter
 	{
