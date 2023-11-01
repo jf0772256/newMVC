@@ -27,6 +27,7 @@
 	$router->get('/user', function(Request $request)
 	{
 		echo "<h1>Hello Welcome to the guest users page</h1>";
+		if ($request->params['id']) echo "<p>you requested user {$request->params['id']}</p>";
 	})->only('guest');
 	
 	// return completed router
