@@ -12,9 +12,9 @@
 	$siteRouter = require_once $config['routesPath'] . '/site.routes.php';
 	$app->router->use($siteRouter);
 	
-	$userRouter = require_once $config['routesPath'] . '/user.routes.php';
-	$app->router->use($userRouter);
-	
+	//$userRouter = require_once $config['routesPath'] . '/user.routes.php';
+	//$app->router->use($userRouter);
+	$app->router->use(require_once $config['routesPath'] . '/user.routes.php');
 	
 	$app->router->get('/test/serverTest', function ($request, $response)
 	{
