@@ -4,6 +4,7 @@
 	
 	use Exception;
 	use \Jesse\SimplifiedMVC\exception\NotFound;
+	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	class Router extends IRouter
 	{
@@ -67,6 +68,12 @@
 			return $this;
 		}
 		
+		public function only($key) : ?self
+		{
+			$this->middleware($key);
+			return $this;
+		}
+		
 		/**
 		 * Resolves the routes and completes any actions
 		 * @return mixed
@@ -79,7 +86,9 @@
 			$method = $this->request->method();
 			$path = $this->request->parameterSearch($this->requestRoutesArray($this,$method), $path);
 			// route action
-			$callback = $this->requestRoutesArray($this,$method,$path) ?? false;
+			$data = $this->requestRoutesArray($this,$method,$path) ?? false;
+			$callback = $data['action'];
+			$middleware = $data['middleware'];
 			// action cannot be null / not set
 			if (!$callback)
 			{
@@ -104,5 +113,10 @@
 			
 			// call back is a render function.
 			return  call_user_func($callback, $this->request, $this->response);
+		}
+		
+		public function test()
+		{
+			return $this->requestRoutesArray($this);
 		}
 	}
