@@ -3,7 +3,6 @@
 	namespace Jesse\SimplifiedMVC;
 	
 	use InvalidArgumentException;
-	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	class IRouter
 	{
@@ -47,7 +46,7 @@
 			$this->cachedRoute = ["method" => $method, "route" => $route];
 		}
 		
-		protected function middleware($key)
+		protected function middleware($key) : void
 		{
 			// fetch local cache if is empty reject
 			$lc = $this->cachedRoute;
