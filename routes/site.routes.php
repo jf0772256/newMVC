@@ -20,11 +20,5 @@
 		echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur cumque enim error, exercitationem facere maxime minus molestiae nam nobis non perferendis porro quidem temporibus unde! Earum in itaque repellendus!</p>";
 	});
 	
-	$router->get('/serverTest', function ($request, $response)
-	{
-		header('Content-Type: application/json');
-		Utility::dieAndDumpPretty($_SERVER);
-	});
-	
 	// return completed router
 	return $router;

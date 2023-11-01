@@ -16,18 +16,17 @@
 	});
 	
 	// testing that the params works
-	$router->get('/user/{id}', function(Request $request)
+	$router->get('/users/{id}', function(Request $request)
 	{
-		echo "<h1>Hello Welcome to the users page</h1>";
+		echo "<h1>Hello Welcome to the authenticated users page</h1>";
 		echo "<p>you requested user {$request->params['id']}</p>";
-	});
+	})->only('auth');
 	
 	// testing that the params works
 	$router->get('/user', function(Request $request)
 	{
-		echo "<h1>Hello Welcome to the users page</h1>";
-		echo "<p>you requested user {$request->params['id']}</p>";
-	});
+		echo "<h1>Hello Welcome to the guest users page</h1>";
+	})->only('guest');
 	
 	// return completed router
 	return $router;
