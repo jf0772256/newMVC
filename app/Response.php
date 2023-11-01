@@ -9,7 +9,7 @@
 			"403" => "403: You're Not Authorized",
 			"404" => "404: Page Not Found"
 		];
-		function statusCode(?int $code) : ?int
+		function statusCode(?int $code = null) : ?int
 		{
 			return http_response_code($code ?? 0);
 		}
