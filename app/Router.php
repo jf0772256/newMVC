@@ -94,7 +94,7 @@
 			$path = $this->request->parameterSearch($this->requestRoutesArray($this,$method), $path);
 			// route action
 			$data = $this->requestRoutesArray($this,$method,$path) ?? false;
-			$callback = $data['action'];
+			$callback = $data['action']?? null;
 			// action cannot be null / not set
 			if (!$callback)
 			{
