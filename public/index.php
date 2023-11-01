@@ -27,4 +27,17 @@
 		Utility::dieAndDumpPretty(Application::$app->router->test());
 	})->only('local');
 	
-	$app->run();
+	try
+	{
+		$app->router->resolve();
+	}
+	catch (NotFound $e)
+	{
+		$app->response->statusCode(404);
+		die($app->response->errorTitle($app->response->statusCode()));
+	}
+	catch (Exception $e)
+	{
+		die($e);
+	}
+	// $app->run();
