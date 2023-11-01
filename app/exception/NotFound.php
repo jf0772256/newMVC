@@ -1,6 +1,6 @@
 <?php
 	
-	namespace Jesse\SimplifiedMVC\exception;
+	namespace Jesse\SimplifiedMVC\Exception;
 	
 	class NotFound extends \Exception
 	{

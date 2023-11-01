@@ -1,6 +1,7 @@
 <?php
 	
 	use Jesse\SimplifiedMVC\Application;
+	use Jesse\SimplifiedMVC\Exception\NotFound;
 	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
