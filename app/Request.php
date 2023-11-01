@@ -2,8 +2,14 @@
 	
 	namespace Jesse\SimplifiedMVC;
 	
+	use Exception;
+	
 	class Request
 	{
+		/**
+		 * @var bool if the _method is not present then an actual request with type was passed, and we will need to process it to get the body worked out
+		 */
+		private bool $overwrittenMethod = false;
 		public array $params = [];
 		public string $contentType = "";
 		/**
@@ -28,7 +34,7 @@
 			return $parts['path'];
 		}
 		public function method() : string {
-			$this->isOtherRequestType();
+			$this->overwrittenMethod = $this->isOtherRequestType();
 			return \strtolower($_SERVER['REQUEST_METHOD']);
 		}
 		public function isGet() : bool {
