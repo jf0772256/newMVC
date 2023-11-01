@@ -5,6 +5,7 @@
 	class Request
 	{
 		public array $params = [];
+		public string $contentType = "";
 		/**
 		 * processes query string
 		 * @param string $queryString
@@ -62,16 +63,17 @@
 		}
 		public function getRequestBody() : array
 		{
+			$this->processContentType();
 			$body = [];
 			if ($this->isGet()) {
 				foreach ($_GET as $key => $value) {
 					$body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
 				}
-			} elseif ($this->isPost()) {
+			} elseif ($this->isPost() && $this->contentType !== "application/json") {
 				foreach ($_POST as $key => $value) {
 					$body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
 				}
-			} elseif (!$this->isGet() && !$this->isPost()) {
+			} elseif (!$this->isGet() && !$this->isPost() && $this->contentType !== "application/json") {
 				$filtered_get = [];
 				$filtered_post = [];
 				foreach ($_GET as $key => $value) {
@@ -178,5 +180,11 @@
 				$params[$paramNames[$key]] = $uriPathArray[$index];
 			}
 			return true;
+		}
+		
+		private function processContentType() : void
+		{
+			$ct = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? $_SERVER['X_CONTENT_TYPE'] ?? $_SERVER['X_HTTP_CONTENT_TYPE'] ?? "application/x-www-form-urlencoded";
+			$this->contentType = $ct;
 		}
 	}
