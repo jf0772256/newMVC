@@ -88,7 +88,6 @@
 			// route action
 			$data = $this->requestRoutesArray($this,$method,$path) ?? false;
 			$callback = $data['action'];
-			$middleware = $data['middleware'];
 			// action cannot be null / not set
 			if (!$callback)
 			{
@@ -96,6 +95,16 @@
 				$this->response->statusCode(404);
 				throw new NotFound();
 			}
+			
+			try
+			{
+				Middleware::resolve($data['middleware']);
+			}
+			catch (Exception $ex)
+			{
+				die($ex);
+			}
+			
 			
 			if (is_string($callback))
 			{
