@@ -24,7 +24,7 @@
 	})->only('auth');
 	
 	// testing that the params works
-	$router->get('/users', function(Request $request)
+	$router->get('/user', function(Request $request)
 	{
 		echo "<h1>Hello Welcome to the guest users page</h1>";
 	})->only('guest');
