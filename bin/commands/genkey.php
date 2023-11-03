@@ -3,15 +3,16 @@
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ERROR);
-$args = getopt('l:', ['keyLength:']);
+$args = getopt('l:n:', ['keyLength:','keyName:']);
 $keyLen = $args['l'] ? (int)$args['l'] : $args['keyLength'];
+$keyName = $args['n'] ? (string)$args['n'] : $args['keyName'];
 
 $key = bin2hex(openssl_random_pseudo_bytes($keyLen));
 
 echo "Generated key successfully:" . PHP_EOL;
 echo "update your env fields with the following values:" . PHP_EOL;
-echo "ENCODER_KEY_LENGTH={$keyLen}" . PHP_EOL;
-echo "ENCODER_KEY={$key}" . PHP_EOL;
+echo "{$keyName}_LENGTH={$keyLen}" . PHP_EOL;
+echo "{$keyName}_KEY={$key}" . PHP_EOL;
 
 
 
