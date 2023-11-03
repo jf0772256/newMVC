@@ -4,6 +4,10 @@
 	
 	use Jesse\SimplifiedMVC\Database\Connection;
 	use Jesse\SimplifiedMVC\Utilities\DotEnv;
+	use Jesse\SimplifiedMVC\Exception\NotFound;
+	use Exception;
+	use Jesse\SimplifiedMVC\Utilities\Signature;
+	use Jesse\SimplifiedMVC\Utilities\SimpleEncoder;
 	
 	class Application
 	{
@@ -14,6 +18,7 @@
 		public Response $response;
 		public Request $request;
 		public Router $router;
+		public SimpleEncoder $encoder;
 		
 		function __construct(array $config)
 		{
@@ -24,6 +29,8 @@
 			$this->response = new Response();
 			$this->request = new Request();
 			$this->router = new Router($this->request, $this->response);
+			Signature::setKey($_ENV['SIGNATURE_KEY']);
+			$this->encoder = new SimpleEncoder($_ENV['ENCODER_KEY']);
 			// set the constant var $app to this instance
 			Application::$app = $this;
 		}
@@ -46,11 +53,18 @@
 		 * @return void
 		 */
 		function run () {
-			try {
+			try
+			{
 				echo $this->router->resolve();
-			} catch (\Exception $e) {
+			}
+			catch (NotFound $e)
+			{
 				$this->response->statusCode($e->getCode());
 				echo "<h1>Page Not Found</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+			}
+			catch (Exception $e)
+			{
+				die($e);
 			}
 		}
 	}
