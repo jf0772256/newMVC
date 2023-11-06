@@ -15,7 +15,6 @@
 		{
 			
 			$token = str_rot13($token);
-			$token = gzdeflate($token,7);
 			$token = $this->xor($token);
 			$token = base64_encode($token);
 			// make url safe
@@ -28,7 +27,6 @@
 			$token = str_replace(['_','.'],['+','/'],$token);
 			$token = base64_decode($token);
 			$token = $this->xor($token);
-			$token = gzinflate($token);
 			$token = str_rot13($token);
 			return $token;
 		}
