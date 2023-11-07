@@ -2,10 +2,17 @@
 	
 	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Exception\NotFound;
+	use Jesse\SimplifiedMVC\Request;
+	use Jesse\SimplifiedMVC\Utilities\URL;
 	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
 	$config = require_once "../app/config/config.php";
+	
+	$url = new URL($_SERVER);
+	Request::setUrl($url);
+	
+//	Utility::dieAndDumpPretty($url);
 	
 	$app = new Application($config);
 	
