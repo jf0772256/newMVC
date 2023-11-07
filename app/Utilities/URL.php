@@ -31,9 +31,6 @@
 			return $this->signature;
 		}
 		function getRequestUri() : string { return $this->requestUri; }
-		function getUrlFragment(?string $starting = '') : string {
-			return !empty($this->fragment) ? "{$starting}{$this->fragment}" : '';
-		}
 		function getURLRequest() : string
 		{
 			return "{$this->protocol}://{$this->host}{$this->requestUri}";
