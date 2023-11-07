@@ -3,6 +3,7 @@
 	use Jesse\SimplifiedMVC\Request;
 	use Jesse\SimplifiedMVC\Response;
 	use Jesse\SimplifiedMVC\Router;
+	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
 	
@@ -27,7 +28,7 @@
 	$router->get('/user', function(Request $request)
 	{
 		echo "<h1>Hello Welcome to the guest users page</h1>";
-		if ($request->params['id']) echo "<p>you requested user {$request->params['id']}</p>";
+		if (!empty($request->params['id'])) echo "<p>you requested user {$request->params['id']}</p>";
 	})->only('guest');
 	
 	// return completed router
