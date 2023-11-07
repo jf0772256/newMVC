@@ -37,7 +37,7 @@
 		}
 		function getURLRequestQuery() : string
 		{
-			return "{$this->getURLRequest()}{$this->getQueryValues('?')}";
+			return "{$this->getURLRequest()}{$this->getQueryValuesString('?')}";
 		}
 		function parseQueryString() : array
 		{
@@ -56,4 +56,5 @@
 			return $this->queryArray;
 		}
 		function getQueryValuesArray() : array { return $this->queryArray; }
+		function getSignedUrl() : string { return $this->getURLRequestQuery() . (!empty($this->queryString) ? "&signature=" : "?signature=") . Signature::sign($this->getURLRequestQuery()); }
 	}
