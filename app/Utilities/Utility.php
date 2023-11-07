@@ -29,8 +29,4 @@
 			var_dump($value);
 			echo '</pre>';
 		}
-		
-		static function parseURI($value) {
-			return \parse_url($value);
-		}
 	}
