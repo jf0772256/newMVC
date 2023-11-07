@@ -2,8 +2,10 @@
 	
 	namespace Jesse\SimplifiedMVC;
 	
-	use Jesse\SimplifiedMVC\Database\Connection;
 	use Jesse\SimplifiedMVC\Utilities\DotEnv;
+	use Jesse\SimplifiedMVC\Database\Connection;
+	use Jesse\SimplifiedMVC\Exception\BadRequest;
+	use Jesse\SimplifiedMVC\Exception\Forbidden;
 	use Jesse\SimplifiedMVC\Exception\NotFound;
 	use Exception;
 	use Jesse\SimplifiedMVC\Utilities\Signature;
@@ -61,6 +63,16 @@
 			{
 				$this->response->statusCode($e->getCode());
 				echo "<h1>Page Not Found</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+			}
+			catch (Forbidden $f)
+			{
+				$this->response->statusCode($f->getCode());
+				echo "<h1>Unauthorized Access</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+			}
+			catch (BadRequest $b)
+			{
+				$this->response->statusCode($b->getCode());
+				echo "<h1>400: Unable to process request</h1>";
 			}
 			catch (Exception $e)
 			{
