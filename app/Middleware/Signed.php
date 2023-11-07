@@ -4,17 +4,19 @@
 	
 	use Jesse\SimplifiedMVC\Response;
 	use Jesse\SimplifiedMVC\Utilities\Signature;
+	use Jesse\SimplifiedMVC\Utilities\URL;
 	
 	class Signed
 	{
 		public function handle() : void
 		{
 			Signature::setKey($_ENV['SIGNATURE_KEY']);
+			$url = new URL($_SERVER);
 			// check signature if not pass throw an error or redirect
-			$incomingServerRequest = $_SERVER['REQUEST_SCHEME'] . "://" .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '');
-			$parts = explode('&signature=', $incomingServerRequest);
+			$incomingServerRequest = $url->getURLRequestQuery();
+			$signature = $url->getSignature();
 			// check if the signature exists and is valid
-			if (count($parts) <=1 || empty($parts[1]) || !Signature::verify($parts[1], $parts[0]))
+			if (empty($signature) || !Signature::verify($signature, $incomingServerRequest))
 			{
 				// missing signature
 				(new Response)->redirect('/');
