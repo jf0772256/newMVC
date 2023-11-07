@@ -3,6 +3,7 @@
 	namespace Jesse\SimplifiedMVC;
 	
 	use Exception;
+	use Jesse\SimplifiedMVC\Utilities\URL;
 	
 	class Request
 	{
@@ -12,26 +13,12 @@
 		private bool $overwrittenMethod = false;
 		public array $params = [];
 		public string $contentType = "";
-		/**
-		 * processes query string
-		 * @param string $queryString
-		 *
-		 * @return void
-		 */
-		private function processQueryStringToParamArray(string $queryString) : void
-		{
-			$smallify = explode('&', $queryString);
-			foreach ($smallify as $KvPair)
-			{
-				$keyValueArray = explode('=', $KvPair);
-				$this->params[$keyValueArray[0]] = $keyValueArray[1];
-			}
-		}
+		private static URL $url;
 		public function getPath() : string
 		{
-			$parts = parse_url($_SERVER['REQUEST_URI']);
-			if (array_key_exists('query', $parts)) $this->processQueryStringToParamArray($parts['query']);
-			return $parts['path'];
+			$params = static::$url->getQueryValuesArray();
+			foreach ($params as $key => $value) $this->params[$key] = $value;
+			return static::$url->getRequestUri();
 		}
 		public function method() : string {
 			$this->overwrittenMethod = $this->isOtherRequestType();
@@ -216,4 +203,10 @@
 			$ct = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? $_SERVER['X_CONTENT_TYPE'] ?? $_SERVER['X_HTTP_CONTENT_TYPE'] ?? "application/x-www-form-urlencoded";
 			$this->contentType = $ct;
 		}
+		
+		public static function setUrl (URL $url) : void
+		{
+			static::$url = $url;
+		}
+		public static function getUrl() : URL { return static::$url; }
 	}
