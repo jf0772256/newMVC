@@ -2,6 +2,8 @@
     "name": "jesse/simplified_mvc",
     "description": "An attempt to simplify the mvc framework project",
     "type": "project",
+    "homepage": "https://github.com/jf0772256/newMVC",
+    "keywords": ["php8-mvc", "mvc", "simple-mvc", "php-mvc"],
     "autoload": {
         "psr-4": {
             "Jesse\\SimplifiedMVC\\": "app/"
@@ -10,7 +12,8 @@
     "authors": [
         {
             "name": "Jesse Fender",
-            "email": "jessefender@jessefender.com"
+            "email": "jessefender@jessefender.com",
+            "homepage": "https://github.com/jf0772256"
         }
     ],
     "require": {
