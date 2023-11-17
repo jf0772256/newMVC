@@ -3,6 +3,7 @@
 .vscode/
 
 .env
+dockerSite.env
 public/.htaccess
 
 /vendor/
