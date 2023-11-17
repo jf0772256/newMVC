@@ -20,6 +20,11 @@ and copy the following:
 
 This is used for routing and without it the mvc will not work correctly (this can also be done in the vhost file as well)
 
+For either Docker or other server the following must be completed::
+
+make sure to generate your application keys - by running 
+```php bin/commands/genkey.php [-l|--keyLength]=(int) [-n|--keyName]=(string)[ENCODER | SIGNATURE]``` twice on for each... copy to the env file for the project
+
 -------------------------------------------------------------------
 
 We now are working to provide a simple way to spin up a docker server to test this code out for yourself.
