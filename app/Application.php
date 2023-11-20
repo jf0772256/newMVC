@@ -10,28 +10,37 @@
 	use Exception;
 	use Jesse\SimplifiedMVC\Utilities\Signature;
 	use Jesse\SimplifiedMVC\Utilities\SimpleEncoder;
+	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	class Application
 	{
 		public static Application $app;
 		public static string $RootPath;
-		
 		public Connection $connection;
+		
 		public Response $response;
 		public Request $request;
 		public Router $router;
 		public SimpleEncoder $encoder;
+		public Controller $controller;
+		public View $view;
+		public string $layout = "main";
 		
 		function __construct(array $config)
 		{
 			// do initialization stuff...
 			Application::$RootPath = $config['rootPath'];
-			DotEnv::load($config['envPath']);
+			// if running in a native application server
+			// DotEnv::load($config['envPath']);
+			// if using docker containers use this file...
+			 DotEnv::load($config['dockerSiteEnvPath']);
 			$this->connect();
 			$this->response = new Response();
 			$this->request = new Request();
 			$this->router = new Router($this->request, $this->response);
-			Signature::setKey($_ENV['SIGNATURE_KEY']);
+			$this->controller = new Controller();
+			$this->view = new View();
+			if (!empty($_ENV['SIGNATURE_KEY'])) Signature::setKey($_ENV['SIGNATURE_KEY']);
 			$this->encoder = new SimpleEncoder($_ENV['ENCODER_KEY']);
 			// set the constant var $app to this instance
 			Application::$app = $this;
@@ -46,6 +55,8 @@
 			$this->connection->pass = $_ENV['DATABASE_PASS'];
 			$this->connection->port = $_ENV['DATABASE_PORT'];
 			$this->connection->host = $_ENV['DATABASE_HOST'];
+			
+			//Utility::dieAndDumpPretty($this->connection);
 			
 			$this->connection->connect();
 		}

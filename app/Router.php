@@ -5,6 +5,7 @@
 	use Exception;
 	use Jesse\SimplifiedMVC\Exception\NotFound;
 	use Jesse\SimplifiedMVC\Middleware\Middleware;
+	use simpleMVC\controllers;
 	
 	class Router extends IRouter
 	{
@@ -116,23 +117,26 @@
 			if (is_string($callback))
 			{
 				// this is a loaded view
+				return Application::$app->view->renderView($callback, ["pageTitle" => $callback, "params" => $this->request->params]);
 				// not yet implemented
-				throw new Exception("Not Yet Implemented", 404);
+				//throw new Exception("Not Yet Implemented", 404);
 			}
 			
 			if (is_array($callback))
 			{
 				// this is the controller process
+				/**
+				 * @var Controller $controller
+				 */
+				$controller = new $callback[0];
+				Application::$app->controller = $controller;
+				$controller->action = $callback[1];
+				$callback[0] = $controller;
 				// not yet implemented
-				throw new Exception("Not Yet Implemented", 404);
+				//throw new Exception("Not Yet Implemented", 404);
 			}
 			
 			// call back is a render function.
 			return  call_user_func($callback, $this->request, $this->response);
-		}
-		
-		public function test()
-		{
-			return $this->requestRoutesArray($this);
 		}
 	}
