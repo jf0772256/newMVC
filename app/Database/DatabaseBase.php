@@ -77,7 +77,7 @@
 		 * @return void
 		 * @author Jesse Fender
 		 */
-		abstract function connect ();
+		abstract public function connect ();
 		
 		/**
 		 * Fetches connection from the class. you technically can use teh getter, but this allows a functional process for this
