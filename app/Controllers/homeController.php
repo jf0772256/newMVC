@@ -9,4 +9,9 @@
 		{
 			return $this->render('home', []);
 		}
+		
+		function about() : string
+		{
+			return $this->render('about', ['title'=>'About']);
+		}
 	}

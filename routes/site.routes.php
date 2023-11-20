@@ -11,11 +11,7 @@
 	
 	$router->get('/', [homeController::class, 'home']);
 	
-	$router->get("/about", function ()
-	{
-		echo "<h1>About Us!</h1>";
-		echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur cumque enim error, exercitationem facere maxime minus molestiae nam nobis non perferendis porro quidem temporibus unde! Earum in itaque repellendus!</p>";
-	});
+	$router->get("/about", [homeController::class, 'about']);
 	
 	// return completed router
 	return $router;
