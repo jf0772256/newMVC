@@ -50,7 +50,7 @@
 				return $statement;
 		}
 		
-		function connect () : void
+		public function connect () : void
 		{
 			try
 			{
@@ -59,7 +59,8 @@
 					// create connection using pdo
 					$this->connection = new PDO($this->buildDSN(), $this->user, $this->pass, $this->pdoOptions);
 					$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				} elseif ($this->connectionType === "sqlite")
+				}
+				elseif ($this->connectionType === "sqlite")
 				{
 					// create connection using pdo specifically for sqlite
 					$this->connection = new PDO($this->buildDSN(), null, null, $this->pdoOptions);
