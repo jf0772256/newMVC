@@ -35,7 +35,7 @@
 			}
 			return Application::$app->connection->ExecuteQuery($sql, $values);
 		}
-		function fetchAll(?array $orderBy = []) : PDOStatement
+		static function fetchAll(?array $orderBy = []) : PDOStatement
 		{
 			$table = static::tableName();
 			$sql = "SELECT * FROM {$table}";
