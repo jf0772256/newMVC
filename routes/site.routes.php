@@ -1,9 +1,9 @@
 <?php
 	
-	use Jesse\SimplifiedMVC\Controllers\homeController;
 	use Jesse\SimplifiedMVC\Request;
 	use Jesse\SimplifiedMVC\Response;
 	use Jesse\SimplifiedMVC\Router;
+	use Jesse\SimplifiedMVC\Controllers\homeController;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
 	

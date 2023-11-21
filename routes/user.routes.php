@@ -3,7 +3,6 @@
 	use Jesse\SimplifiedMVC\Request;
 	use Jesse\SimplifiedMVC\Response;
 	use Jesse\SimplifiedMVC\Router;
-	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
 	

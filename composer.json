@@ -6,7 +6,9 @@
     "keywords": ["php8-mvc", "mvc", "simple-mvc", "php-mvc"],
     "autoload": {
         "psr-4": {
-            "Jesse\\SimplifiedMVC\\": "app/"
+            "Jesse\\SimplifiedMVC\\": "app/",
+            "Jesse\\SimplifiedMVC\\Controllers\\": "Controllers/",
+            "Jesse\\SimplifiedMVC\\Models\\": "Models/"
         }
     },
     "authors": [
@@ -19,7 +21,6 @@
     "require": {
 	    "ext-pdo": "*",
         "ext-zlib": "*",
-        "ext-openssl": "*",
-        "ext-http": "*"
+        "ext-openssl": "*"
     }
 }
