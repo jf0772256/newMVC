@@ -1,5 +1,5 @@
 <?php
-	namespace Jesse\SimplifiedMVC\Models;
+	namespace Jesse\SimplifiedMVC\Http\Models;
 	use Jesse\SimplifiedMVC\DataModel;
 	
 	class User extends DataModel

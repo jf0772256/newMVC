@@ -1,5 +1,5 @@
 <?php
-	namespace Jesse\SimplifiedMVC\Controllers;
+	namespace Jesse\SimplifiedMVC\Http\Controllers;
 	
 	use Jesse\SimplifiedMVC\Controller;
 	
