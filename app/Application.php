@@ -2,6 +2,7 @@
 	
 	namespace Jesse\SimplifiedMVC;
 	
+	use Jesse\SimplifiedMVC\Http\Models\User;
 	use Jesse\SimplifiedMVC\Utilities\DotEnv;
 	use Jesse\SimplifiedMVC\Database\Connection;
 	use Jesse\SimplifiedMVC\Exception\BadRequest;
@@ -24,6 +25,7 @@
 		public SimpleEncoder $encoder;
 		public Controller $controller;
 		public View $view;
+		public User $user;
 		public string $layout = "main";
 		
 		function __construct(array $config)
