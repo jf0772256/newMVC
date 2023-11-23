@@ -26,6 +26,7 @@
 		public Controller $controller;
 		public View $view;
 		public User $user;
+		public Session $session;
 		public string $layout = "main";
 		
 		function __construct(array $config)
@@ -37,6 +38,7 @@
 			// if using docker containers use this file...
 			 DotEnv::load($config['dockerSiteEnvPath']);
 			$this->connect();
+			$this->session = new Session();
 			$this->response = new Response();
 			$this->request = new Request();
 			$this->router = new Router($this->request, $this->response);
@@ -67,7 +69,8 @@
 		 * Run the application and route any routes!
 		 * @return void
 		 */
-		function run () {
+		function run (): void
+		{
 			try
 			{
 				echo $this->router->resolve();
@@ -75,21 +78,22 @@
 			catch (NotFound $e)
 			{
 				$this->response->statusCode($e->getCode());
-				echo "<h1>Page Not Found</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+				echo $this->view->renderView('_error', ['exception' => $e]);
 			}
 			catch (Forbidden $f)
 			{
 				$this->response->statusCode($f->getCode());
-				echo "<h1>Unauthorized Access</h1>"; // $this->view->renderView('_error', ['exception' => $e]);
+				echo $this->view->renderView('_error', ['exception' => $f]);
 			}
 			catch (BadRequest $b)
 			{
 				$this->response->statusCode($b->getCode());
-				echo "<h1>400: Unable to process request</h1>";
+				echo  $this->view->renderView('_error', ['exception' => $b]);
 			}
-			catch (Exception $e)
+			catch (Exception $ex)
 			{
-				die($e);
+				$this->response->statusCode($ex->getCode());
+				echo  $this->view->renderView('_error', ['exception' => $ex]);
 			}
 		}
 	}

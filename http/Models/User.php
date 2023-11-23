@@ -11,6 +11,7 @@
 		public string $password = "";
 		public string $passwordConfirm = "";
 		public string $created_at = "";
+		public string $updated_at = "";
 		public int $active = 1;
 		static public function tableName (): string
 		{

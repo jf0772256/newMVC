@@ -3,6 +3,7 @@
 	namespace Jesse\SimplifiedMVC;
 	
 	use Exception;
+	use Jesse\SimplifiedMVC\Exception\BadRequest;
 	use Jesse\SimplifiedMVC\Utilities\URL;
 	
 	class Request
@@ -13,6 +14,7 @@
 		private bool $overwrittenMethod = false;
 		public array $params = [];
 		public string $contentType = "";
+		public string $contentTypeExpected = "";
 		private static URL $url;
 		public function getPath() : string
 		{
@@ -54,6 +56,9 @@
 			}
 			return false;
 		}
+		/**
+		 * @throws BadRequest
+		 */
 		public function getRequestBody() : array
 		{
 			$this->processContentType();
@@ -96,11 +101,15 @@
 						foreach ($toKVPairs as $key => $value) $body[$key] = urldecode($value);
 						break;
 					default:
-						throw new Exception("Unacceptable Content Type used OR data was malformed and unable to be processed", 400);
+						throw new BadRequest("Unacceptable Content Type used OR data was malformed and unable to be processed", 400);
 				}
 			}
 			
 			return $body;
+		}
+		public function requestExpects(string $contentTypeExpected) : void
+		{
+			$this->contentTypeExpected = $contentTypeExpected;
 		}
 		/**
 		 * Method to fetch parameters from the request URI and attach them to the named parameters in the route
@@ -197,13 +206,15 @@
 			}
 			return true;
 		}
-		
+		/**
+		 * @throws BadRequest
+		 */
 		private function processContentType() : void
 		{
 			$ct = $_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? $_SERVER['X_CONTENT_TYPE'] ?? $_SERVER['X_HTTP_CONTENT_TYPE'] ?? "application/x-www-form-urlencoded";
+			if ($ct !== $this->contentTypeExpected) throw new BadRequest("CONTENT.TYPE.MISMATCH", 400);
 			$this->contentType = $ct;
 		}
-		
 		public static function setUrl (URL $url) : void
 		{
 			static::$url = $url;

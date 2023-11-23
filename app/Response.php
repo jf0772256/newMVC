@@ -5,13 +5,17 @@
 	class Response
 	{
 		private array $errorTitles = [
-			"400" => "400: Bad request, The server recieved malformed data in teh last request",
+			"400" => "400: Bad request, The server received malformed data in the last request",
 			"403" => "403: You're Not Authorized",
 			"404" => "404: Page Not Found"
 		];
 		function statusCode(?int $code = null) : ?int
 		{
 			return http_response_code($code ?? 0);
+		}
+		function customErrorCode(string $message, ?int $code = 0) : void
+		{
+			header("HTTP/1.1 {$code} {$message}");
 		}
 		function errorTitle(int $error, ?string $errorTitle = NULL) : ?string
 		{
