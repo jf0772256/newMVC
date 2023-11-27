@@ -12,6 +12,9 @@
 	use Jesse\SimplifiedMVC\Utilities\Signature;
 	use Jesse\SimplifiedMVC\Utilities\SimpleEncoder;
 	use Jesse\SimplifiedMVC\Utilities\Utility;
+	use Jesse\SimplifiedMVC\Router\Router;
+	use Jesse\SimplifiedMVC\Router\Response;
+	use Jesse\SimplifiedMVC\Router\Request;
 	
 	class Application
 	{

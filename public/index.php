@@ -1,8 +1,8 @@
 <?php
 	
 	use Jesse\SimplifiedMVC\Application;
-	use Jesse\SimplifiedMVC\Request;
-	use Jesse\SimplifiedMVC\Utilities\URL;
+	use Jesse\SimplifiedMVC\Router\Request;
+	use Jesse\SimplifiedMVC\Router\Utilities\URL;
 	
 	require_once __DIR__ . "/../vendor/autoload.php";
 	$config = require_once "../app/config/config.php";
