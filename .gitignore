@@ -9,3 +9,8 @@ public/.htaccess
 /vendor/
 
 *.lock
+
+# Now managed in their own repo
+
+# https://github.com/jf0772256/simpleMVCRouter
+app/Router/
