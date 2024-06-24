@@ -5,6 +5,8 @@
 .env
 dockerSite.env
 public/.htaccess
+public/css
+public/js
 
 /vendor/
 
@@ -13,4 +15,4 @@ public/.htaccess
 # Now managed in their own repo
 
 # https://github.com/jf0772256/simpleMVCRouter
-app/Router/
+# Local copy requiredbeing adjusted, so they will be readmitted to repo
