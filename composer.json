@@ -20,7 +20,8 @@
     "require": {
 	    "ext-pdo": "*",
         "ext-zlib": "*",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
+        "symfony/console": "^7.1"
     },
     "scripts": {
         "phpInfo": "@php -i",
