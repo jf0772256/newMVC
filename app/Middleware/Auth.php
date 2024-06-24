@@ -2,7 +2,7 @@
 	
 	namespace Jesse\SimplifiedMVC\Middleware;
 	
-	use Jesse\SimplifiedMVC\Response;
+	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
 	
 	class Auth
 	{
@@ -10,6 +10,6 @@
 		{
 			// do auth check... if not authenticated redirect to new location
 			// Testing
-			(new Response())->redirect('/');
+			(new Response())->redirect('/login');
 		}
 	}
