@@ -2,11 +2,12 @@
 	
 	namespace Jesse\SimplifiedMVC\Http\Controllers;
 	
+	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Controller;
 	use Jesse\SimplifiedMVC\Exception\BadRequest;
 	use Jesse\SimplifiedMVC\Http\Models\User;
-	use Jesse\SimplifiedMVC\Request;
-	use Jesse\SimplifiedMVC\Response;
+	use Jesse\SimplifiedMVC\Facades\Router\RequestFacade as Request;
+	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
 	
 	class userController extends Controller
 	{

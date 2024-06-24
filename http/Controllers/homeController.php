@@ -1,7 +1,9 @@
 <?php
 	namespace Jesse\SimplifiedMVC\Http\Controllers;
 	
+	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Controller;
+	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	class homeController extends Controller
 	{
