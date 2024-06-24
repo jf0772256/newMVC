@@ -12,9 +12,9 @@
 	use Jesse\SimplifiedMVC\Utilities\Signature;
 	use Jesse\SimplifiedMVC\Utilities\SimpleEncoder;
 	use Jesse\SimplifiedMVC\Utilities\Utility;
-	use Jesse\SimplifiedMVC\Router\Router;
-	use Jesse\SimplifiedMVC\Router\Response;
-	use Jesse\SimplifiedMVC\Router\Request;
+	use Jesse\SimplifiedMVC\Facades\Router\RouterFacade as Router;
+	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
+	use Jesse\SimplifiedMVC\Facades\Router\RequestFacade as Request;
 	
 	class Application
 	{
