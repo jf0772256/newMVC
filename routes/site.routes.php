@@ -9,9 +9,12 @@
 	
 	$router = new Router(new Request(), new Response());
 	
-	$router->get('/', [homeController::class, 'home']);
+	$router->get('/', [homeController::class, 'home'])->only('auth');
 	
 	$router->get("/about", [homeController::class, 'about']);
+	
+	$router->get("/contact", [homeController::class, 'contact']);
+	$router->post("/contact", [homeController::class, 'contact']);
 	
 	// return completed router
 	return $router;
