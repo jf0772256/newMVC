@@ -4,27 +4,31 @@
 	
 	class Utility
 	{
-		static function dieAndDump($value) {
+		static function dieAndDump($value)
+		{
 			echo '<pre>';
 			var_dump($value);
 			echo '</pre>';
 			die();
 		}
 		
-		static function dieAndDumpPretty($value) {
+		static function dieAndDumpPretty($value)
+		{
 			echo '<pre>';
 			print_r($value);
 			echo '</pre>';
 			die();
 		}
 		
-		static function dumpPrettyAndContinue($value) {
+		static function dumpPrettyAndContinue($value)
+		{
 			echo '<pre>';
 			print_r($value);
 			echo '</pre>';
 		}
 		
-		static function dumpAndContinue($value) {
+		static function dumpAndContinue($value)
+		{
 			echo '<pre>';
 			var_dump($value);
 			echo '</pre>';

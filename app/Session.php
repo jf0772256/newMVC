@@ -4,7 +4,7 @@
 	
 	class Session
 	{
-		private const FLASH_KEY = "Session_Flash_Key";
+		private const string FLASH_KEY = "Session_Flash_Key";
 		
 		function __construct ()
 		{
@@ -19,7 +19,7 @@
 			session_destroy();
 		}
 		
-		function clear(?string $key = null)
+		function clear(?string $key = null) : void
 		{
 			if (!empty($key))
 				$_SESSION[$key] = null;
@@ -27,12 +27,12 @@
 				$_SESSION = [];
 		}
 		
-		function setValue (string $key, $value)
+		function setValue (string $key, $value) : void
 		{
 			$_SESSION[$key] = $value;
 		}
 		
-		function setFlash ($value)
+		function setFlash ($value) : void
 		{
 			$_SESSION[self::FLASH_KEY] = $value;
 		}
