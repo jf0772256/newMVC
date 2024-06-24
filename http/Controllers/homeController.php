@@ -16,4 +16,22 @@
 		{
 			return $this->render('about', ['title'=>'About']);
 		}
+		
+		function contact() : string
+		{
+			$contact = new \Jesse\SimplifiedMVC\Http\Models\Contact();
+			if (Application::$app->request->isPost())
+			{
+				$contact->loadData(Application::$app->request->getRequestBody());
+				// Utility::dieAndDump($contact);
+				if ($contact->validate() && $contact->save())
+				{
+					Application::$app->session->setFlash('success', 'Your message has been sent.');
+					Application::$app->response->redirect('/');
+					exit();
+				}
+				return $this->render('contact', ['title'=>'Contact', 'model'=>$contact]);
+			}
+			return $this->render('contact', ['title'=>'Contact', 'model'=>$contact]);
+		}
 	}
