@@ -57,4 +57,33 @@
 			$response->customErrorCode("Data Accepted & Processed Successfully, OK.", 200);
 			return json_encode(['result' => true, 'userId' => $userId, 'message' => 'User was created successfully']);
 		}
+		
+		function register (Request $request) : string
+		{
+			$this->layout='noauth';
+			$user = new User();
+			if (Application::$app->request->isPost())
+			{
+				$user->loadData(Application::$app->request->getRequestBody());
+				if ($user->validate() /*&& $user->save()*/)
+				{
+					Application::$app->session->setFlash('success', "You've successfully have been registered.");
+					Application::$app->response->redirect('/login');
+					exit();
+				}
+			}
+			return $this->render('register', ['title' => 'Register User', 'model' => $user]);
+		}
+		
+		function login (Request $request) : string
+		{
+			$this->layout='noauth';
+			$user = new User();
+			return $this->render('login', ['title' => 'Log In', 'model' => $user]);
+		}
+		
+		function logout(Request $request) : string
+		{
+			return "Not Implemented";
+		}
 	}
