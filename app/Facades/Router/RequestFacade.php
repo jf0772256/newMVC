@@ -2,7 +2,6 @@
 	
 	namespace Jesse\SimplifiedMVC\Facades\Router;
 	
-	class RequestFacade
-	{
-		
-	}
+	use \Jesse\SimplifiedMVC\Router\Request as Request;
+	
+	class RequestFacade extends Request {}

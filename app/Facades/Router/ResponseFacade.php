@@ -2,7 +2,6 @@
 	
 	namespace Jesse\SimplifiedMVC\Facades\Router;
 	
-	class ResponseFacade
-	{
-		
-	}
+	use \Jesse\SimplifiedMVC\Router\Response;
+	
+	class ResponseFacade extends Response {}
