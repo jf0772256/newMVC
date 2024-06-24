@@ -54,21 +54,9 @@
 		{
 			try
 			{
-				if ($this->connectionType === "pdo")
-				{
-					// create connection using pdo
-					$this->connection = new PDO($this->buildDSN(), $this->user, $this->pass, $this->pdoOptions);
-					$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				}
-				elseif ($this->connectionType === "sqlite")
-				{
-					// create connection using pdo specifically for sqlite
-					$this->connection = new PDO($this->buildDSN(), null, null, $this->pdoOptions);
-					$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				} else
-				{
-					throw new DatabaseInterfaceException('Interface not implemented', 1042);
-				}
+				// create connection using pdo
+				$this->connection = new PDO($this->buildDSN(), $this->user, $this->pass, $this->pdoOptions);
+				$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (\Throwable $th)
 			{
 				Utility::dieAndDumpPretty($th);
