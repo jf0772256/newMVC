@@ -11,8 +11,7 @@
 		public string $password = "";
 		public string $passwordConfirm = "";
 		public string $created_at = "";
-		public string $updated_at = "";
-		public int $active = 1;
+		public string|null $updated_at;
 		static public function tableName (): string
 		{
 			return "users";
@@ -23,8 +22,7 @@
 				"firstName",
 				"lastName",
 				"email",
-				"password",
-				"active"
+				"password"
 			];
 		}
 		static public function primaryKey (): string
