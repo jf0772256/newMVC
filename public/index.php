@@ -15,10 +15,9 @@
 	$siteRouter = require_once $config['routesPath'] . '/site.routes.php';
 	$app->router->use($siteRouter);
 	
-	//$userRouter = require_once $config['routesPath'] . '/user.routes.php';
-	//$app->router->use($userRouter);
-	$app->router->use(require_once $config['routesPath'] . '/user.routes.php');
+	//$app->router->use(require_once $config['routesPath'] . '/user.routes.php');
 	
-	$app->router->use(require_once $config['routesPath'] . '/api.routes.php');
+	$app->router->use('user.routes');
+	$app->router->use('api.routes');
 	
 	$app->run();
