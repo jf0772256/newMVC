@@ -14,12 +14,14 @@
 	{
 		function guestUserView(Request $request) : string
 		{
+			$this->setLayout('main');
 			$params = ['title' => 'Users Page'];
 			foreach ($request->params as $key => $value) $params[$key] = $value;
 			return $this->render('userList', $params);
 		}
 		function authUserView(Request $request) : string
 		{
+			$this->setLayout('main');
 			$params = ['title' => 'Auth Users Page'];
 			foreach ($request->params as $key => $value) $params[$key] = $value;
 			return $this->render('authUserList', $params);
@@ -59,13 +61,16 @@
 			return json_encode(['result' => true, 'userId' => $userId, 'message' => 'User was created successfully']);
 		}
 		
+		/**
+		 * @throws \Exception
+		 */
 		function register (Request $request) : string
 		{
-			$this->layout='noauth';
+			$this->setLayout('noauth');
 			$user = new User();
 			if (Application::$app->request->isPost())
 			{
-				$user->loadData(Application::$app->request->getRequestBody());
+				$user->loadData($this->getBody());
 				if ($user->validate() && $user->save())
 				{
 					Application::$app->session->setFlash(['success', "You've successfully have been registered."]);
@@ -78,14 +83,15 @@
 		
 		/**
 		 * @throws \Jesse\SimplifiedMVC\Router\Exception\BadRequest
+		 * @throws \Exception
 		 */
 		function login (Request $request) : string
 		{
-			$this->layout='noauth';
+			$this->setLayout('noauth');
 			$login = new LoginForm();
 			if ($request->isPost())
 			{
-				$login->loadData(Application::$app->request->getRequestBody());
+				$login->loadData($this->getBody());
 				if ($login->validate() && $login->login())
 				{
 					// set session and redirect

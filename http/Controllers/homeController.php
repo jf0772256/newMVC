@@ -9,20 +9,23 @@
 	{
 		function home(): string
 		{
+			$this->setLayout('main');
 			return $this->render('home', []);
 		}
 		
 		function about() : string
 		{
+			$this->setLayout('main');
 			return $this->render('about', ['title'=>'About']);
 		}
 		
 		function contact() : string
 		{
+			$this->setLayout('main');
 			$contact = new \Jesse\SimplifiedMVC\Http\Models\Contact();
 			if (Application::$app->request->isPost())
 			{
-				$contact->loadData(Application::$app->request->getRequestBody());
+				$contact->loadData($this->getBody());
 				// Utility::dieAndDump($contact);
 				if ($contact->validate() && $contact->save())
 				{
