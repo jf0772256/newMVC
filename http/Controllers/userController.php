@@ -99,6 +99,8 @@
 		
 		function logout(Request $request) : string
 		{
-			return "Not Implemented";
+			Application::$app->session->clear('authenticated');
+			Application::$app->user = new User();
+			Application::$app->response->redirect('/');
 		}
 	}
