@@ -36,10 +36,10 @@ class CreateModel extends Command {
 		$output->writeln('Create new model...');
 		$class = $input->getArgument("ModelName");
 		$uses = (int)$input->getArgument("UsesModel");
-		$path = "models\\$class.php";
+		$path = dirname(__DIR__, 3) . "/http/Models/{$class}.php";
 		$data = "<?php" . PHP_EOL . PHP_EOL;
-		$data .= "namespace app\models;" . PHP_EOL;
-		$data .= $uses == 1 ? "use app\core\DbModel;" . PHP_EOL . PHP_EOL : "use app\core\Model;" . PHP_EOL . PHP_EOL;
+		$data .= "namespace Jesse\SimplifiedMVC\Http\Models;" . PHP_EOL;
+		$data .= $uses == 1 ? "use Jesse\SimplifiedMVC\DbModel;" . PHP_EOL . PHP_EOL : "use Jesse\SimplifiedMVC\Model;" . PHP_EOL . PHP_EOL;
 		$data .= $uses == 1 ? "class {$class} extends DBModel {" . PHP_EOL : "class {$class} extends Model {" . PHP_EOL;
 		$data .= "\tfunction rules() : array {" . PHP_EOL;
 		$data .= "\t\treturn []; // Populate validation rules" . PHP_EOL;
