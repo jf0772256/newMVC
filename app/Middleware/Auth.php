@@ -2,6 +2,7 @@
 	
 	namespace Jesse\SimplifiedMVC\Middleware;
 	
+	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
 	
 	class Auth
@@ -9,7 +10,10 @@
 		public function handle () : void
 		{
 			// do auth check... if not authenticated redirect to new location
-			// Testing
-			(new Response())->redirect('/login');
+			if (!Application::$app->session->getValue('authenticated') ?? false)
+			{
+				// Testing
+				(new Response())->redirect('/login');
+			}
 		}
 	}
