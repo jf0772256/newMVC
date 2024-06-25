@@ -19,4 +19,6 @@
 	//$app->router->use($userRouter);
 	$app->router->use(require_once $config['routesPath'] . '/user.routes.php');
 	
+	$app->router->use(require_once $config['routesPath'] . '/api.routes.php');
+	
 	$app->run();
