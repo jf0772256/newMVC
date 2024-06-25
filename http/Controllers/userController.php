@@ -5,6 +5,7 @@
 	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Controller;
 	use Jesse\SimplifiedMVC\Exception\BadRequest;
+	use Jesse\SimplifiedMVC\Http\Models\LoginForm;
 	use Jesse\SimplifiedMVC\Http\Models\User;
 	use Jesse\SimplifiedMVC\Facades\Router\RequestFacade as Request;
 	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
@@ -75,11 +76,25 @@
 			return $this->render('register', ['title' => 'Register User', 'model' => $user]);
 		}
 		
+		/**
+		 * @throws \Jesse\SimplifiedMVC\Router\Exception\BadRequest
+		 */
 		function login (Request $request) : string
 		{
 			$this->layout='noauth';
-			$user = new User();
-			return $this->render('login', ['title' => 'Log In', 'model' => $user]);
+			$login = new LoginForm();
+			if ($request->isPost())
+			{
+				$login->loadData(Application::$app->request->getRequestBody());
+				if ($login->validate() && $login->login())
+				{
+					// set session and redirect
+					Application::$app->session->setValue('authenticated', true);
+					Application::$app->user = User::find(['email' => $login->email]);
+					Application::$app->response->redirect('/');
+				}
+			}
+			return $this->render('login', ['title' => 'Log In', 'model' => $login]);
 		}
 		
 		function logout(Request $request) : string
