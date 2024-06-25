@@ -81,4 +81,9 @@
 			$statement->closeCursor();
 			return $retArray;
 		}
+		public function save() : bool
+		{
+			$this->password = password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 12]);
+			return parent::save();
+		}
 	}
