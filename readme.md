@@ -5,7 +5,7 @@ The purpose of this repo is to attempt to simplify the mvc framework that was cr
 Requires: 
 PHP 8.2 or greater!
 
-You will need to include the router (extracted to its own repo) and install script will be added that will do the pull, but until then
+**You will need to include the router (extracted to its own repo)** and install script will be added that will do the pull, but until then
 run the following command::
 
 ```git
@@ -42,7 +42,7 @@ https://github.com/sprintcube/docker-compose-lamp
 
 
 copy and rename sample.env to .env (not the env in this project)
-open and set the php version to php82
+open and set the php version to php82 or higher
 change other files as you wish
 
 clone this project to the www folder into a sub folder(because there is some code in the root www folder that you will need)
