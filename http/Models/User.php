@@ -65,6 +65,7 @@
 				return $user;
 			}
 			$statement->closeCursor();
+			return new User();
 		}
 		public static function every() : array
 		{
