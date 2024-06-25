@@ -44,7 +44,7 @@
 			$this->session = new Session();
 			$this->response = new Response();
 			$this->request = new Request();
-			$this->router = new Router($this->request, $this->response);
+			$this->router = new Router($this->request, $this->response, $config['routesPath']);
 			$this->controller = new Controller();
 			$this->view = new View();
 			if (!empty($_ENV['SIGNATURE_KEY'])) Signature::setKey($_ENV['SIGNATURE_KEY']);

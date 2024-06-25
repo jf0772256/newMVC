@@ -10,9 +10,9 @@
 	
 	class RouterFacade extends Router
 	{
-		public function __construct(RequestFacade $request, ResponseFacade $response)
+		public function __construct(RequestFacade $request, ResponseFacade $response, ?string $routesPath = "")
 		{
-			parent::__construct($request, $response);
+			parent::__construct($request, $response, $routesPath);
 			$this->__set_facade_classes(Application::class, Middleware::class);
 		}
 	}
