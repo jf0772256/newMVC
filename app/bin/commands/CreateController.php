@@ -34,16 +34,17 @@ class CreateController extends Command {
 	{
 		$output->writeln('Creating controller');
 		$class = $input->getArgument('ClassName');
-		$path = "controllers/{$class}.php";
+		$path = dirname(__DIR__, 3) . "/http/Controllers/{$class}.php";
 		$data = "<?php" . PHP_EOL;
-		$data .= "namespace app\controllers;" . PHP_EOL;
-		$data .= "use app\core\Controller;" . PHP_EOL . PHP_EOL;
-		$data .= "class {$class} extends Controller {" . PHP_EOL;
+		$data .= "namespace Jesse\SimplifiedMVC\Http\Controllers;" . PHP_EOL;
+		$data .= "use Jesse\SimplifiedMVC\Controller;" . PHP_EOL . PHP_EOL;
+		$data .= "class {$class} extends Controller" . PHP_EOL;
+		$data .= "{" . PHP_EOL;
 		$data .= "\tfunction __construct() {}" . PHP_EOL;
 		$data .= "}" . PHP_EOL;
 		$data .= "?>";
 		file_put_contents($path, $data);
-		$output->writeln("File Creation Completed: controllers\\$class.php");
+		$output->writeln("File Creation Completed: http\Controllers\\$class.php");
 		return 0;
 	}
 }
