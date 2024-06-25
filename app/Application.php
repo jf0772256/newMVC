@@ -39,7 +39,7 @@
 			// if running in a native application server
 			// DotEnv::load($config['envPath']);
 			// if using docker containers use this file...
-			 DotEnv::load($config['dockerSiteEnvPath']);
+			DotEnv::load($config['dockerSiteEnvPath']);
 			$this->connect();
 			$this->session = new Session();
 			$this->response = new Response();
