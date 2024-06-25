@@ -12,8 +12,8 @@
 	// internal routes -- Note though that any routes added with the same route and method will overwrite preceding routes
 	// see below... the last route overwrites this one
 	$router->get('/user', function(Request $request, Response $response) { $response->redirect('/users'); });
-	$router->post('/user', [userController::class, 'create']);
 	$router->get('/user/{id}', [userController::class, 'authUserView'])->only('auth');
+	
 	$router->get('/users', [userController::class, 'guestUserView'])->only('guest');
 	$router->get('/users/{id}', [userController::class, 'guestUserView'])->only('guest');
 	
