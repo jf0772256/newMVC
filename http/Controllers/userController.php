@@ -66,9 +66,9 @@
 			if (Application::$app->request->isPost())
 			{
 				$user->loadData(Application::$app->request->getRequestBody());
-				if ($user->validate() /*&& $user->save()*/)
+				if ($user->validate() && $user->save())
 				{
-					Application::$app->session->setFlash('success', "You've successfully have been registered.");
+					Application::$app->session->setFlash(['success', "You've successfully have been registered."]);
 					Application::$app->response->redirect('/login');
 					exit();
 				}
