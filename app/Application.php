@@ -51,6 +51,8 @@
 			$this->encoder = new SimpleEncoder($_ENV['ENCODER_KEY']);
 			// set the constant var $app to this instance
 			Application::$app = $this;
+			$this->user = (!empty($this->session->getValue('user'))) ? User::find(['id' => $this->session->getValue('user')]) : new User();
+			$this->user->password = "Removed For Safety";
 		}
 		
 		function connect() : void
