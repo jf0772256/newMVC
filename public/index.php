@@ -12,11 +12,13 @@
 	
 	$app = new Application($config);
 	
-	$siteRouter = require_once $config['routesPath'] . '/site.routes.php';
-	$app->router->use($siteRouter);
+//	$siteRouter = require_once $config['routesPath'] . '/site.routes.php';
+//	$app->router->use($siteRouter);
 	
 	//$app->router->use(require_once $config['routesPath'] . '/user.routes.php');
 	
-	$app->router->use('user.routes')->use('api.routes');
+	$app->router->use('site.routes')
+		->use('user.routes')
+		->use('api.routes');
 	
 	$app->run();
