@@ -10,7 +10,7 @@
 		public function handle () : void
 		{
 			// do auth check... if not authenticated redirect to new location
-			if (!Application::$app->session->getValue('authenticated') ?? false)
+			if (!Application::$app->session->getValue('authenticated'))
 			{
 				// Testing
 				(new Response())->redirect('/login');
