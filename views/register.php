@@ -8,9 +8,13 @@
 	 * @var $model Jesse\SimplifiedMVC\Http\Models\User
 	 */
 	
+//	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Form\Form;
+//	use Jesse\SimplifiedMVC\Utilities\Utility;
 	
 	$this->title = 'Register User';
+	
+//	Utility::dieAndDump($_SESSION);
 
 ?>
 <!-- HTML code goes here for the view -->
