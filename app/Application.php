@@ -42,6 +42,8 @@
 			DotEnv::load($config['dockerSiteEnvPath']);
 			$this->connect();
 			$this->session = new Session();
+			if (!$this->session->hasValue('user')) $this->session->setValue('user', null);
+			if (!$this->session->hasValue('authenticated')) $this->session->setValue('authenticated', false);
 			$this->response = new Response();
 			$this->request = new Request();
 			$this->router = new Router($this->request, $this->response, $config['routesPath']);
