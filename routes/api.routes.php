@@ -9,10 +9,11 @@
 	require_once __DIR__ . "/../vendor/autoload.php";
 	
 	$router = new Router(new Request(), new Response());
+	$router->prefix('/api/v1');
 	
-	$router->get('/api/users', [ApiController::class, 'users']);
-	$router->get('/api/users/{id}', [ApiController::class, 'user']);
+	$router->get('/users', [ApiController::class, 'users']);
+	$router->get('/users/{id}', [ApiController::class, 'user']);
 	
-	$router->post('/api/user', [userController::class, 'create']);
+	$router->post('/user', [userController::class, 'create']);
 	
 	return $router;
