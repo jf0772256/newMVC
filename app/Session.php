@@ -43,8 +43,14 @@
 			$_SESSION[self::FLASH_KEY] = null;
 			return $temp;
 		}
+		
 		public function getValue (string $key)
 		{
 			return $_SESSION[$key];
+		}
+		
+		public function hasValue (string $key) : bool
+		{
+			return isset($_SESSION[$key]);
 		}
 	}
