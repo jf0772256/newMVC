@@ -4,7 +4,8 @@
 	
 	use Jesse\SimplifiedMVC\Http\Models\User;
 	use Jesse\SimplifiedMVC\Utilities\DotEnv;
-	use Jesse\SimplifiedMVC\Database\Connection;
+	use Jesse\SimplifiedMVC\Database\Database\Connection;
+	use Jesse\SimplifiedMVC\Database\queryBuilder\Builder as QueryBuilder;
 	use Jesse\SimplifiedMVC\Exception\BadRequest;
 	use Jesse\SimplifiedMVC\Exception\Forbidden;
 	use Jesse\SimplifiedMVC\Exception\NotFound;
@@ -21,6 +22,7 @@
 		public static Application $app;
 		public static string $RootPath;
 		public Connection $connection;
+		public QueryBuilder $builder;
 		
 		public Response $response;
 		public Request $request;
@@ -32,6 +34,9 @@
 		public Session $session;
 		public string $layout = "main";
 		
+		/**
+		 * @throws Exception
+		 */
 		function __construct(array $config)
 		{
 			// do initialization stuff...
@@ -41,6 +46,7 @@
 			// if using docker containers use this file...
 			DotEnv::load($config['dockerSiteEnvPath']);
 			$this->connect();
+			$this->builder = new QueryBuilder($this->connection, $_ENV['DATABASE_TYPE']);
 			$this->session = new Session();
 			if (!$this->session->hasValue('user')) $this->session->setValue('user', null);
 			if (!$this->session->hasValue('authenticated')) $this->session->setValue('authenticated', false);
