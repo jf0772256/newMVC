@@ -19,7 +19,7 @@ class InstallGitRepos extends Command {
 	protected function configure() : void
 	{
 		parent::configure();
-		$this->setName('Runs commands to clone repors from git that are required to work');
+		$this->setHelp('Runs commands to clone repors from git that are required to work');
 		/*$this->setName('run:installGitRepos');*/
 	}
 
