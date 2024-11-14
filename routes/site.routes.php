@@ -8,13 +8,14 @@
 	require_once __DIR__ . "/../vendor/autoload.php";
 	
 	$router = new Router(new Request(), new Response());
+	$router->controller(homeController::class);
 	
-	$router->get('/', [homeController::class, 'home'])->only('auth');
+	$router->get('/', 'home')->only('auth');
 	
-	$router->get("/about", [homeController::class, 'about']);
+	$router->get("/about", 'about');
 	
-	$router->get("/contact", [homeController::class, 'contact']);
-	$router->post("/contact", [homeController::class, 'contact']);
+	$router->get("/contact", 'contact');
+	$router->post("/contact", 'contact');
 	
 	// return completed router
 	return $router;
