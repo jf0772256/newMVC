@@ -3,6 +3,7 @@
 	
 	use Jesse\SimplifiedMVC\Application;
 	use Jesse\SimplifiedMVC\Controller;
+	use Jesse\SimplifiedMVC\Http\Models\Contact;
 	use Jesse\SimplifiedMVC\Utilities\Utility;
 	use Jesse\SimplifiedMVC\Facades\Router\ResponseFacade as Response;
 	use Jesse\SimplifiedMVC\Facades\Router\RequestFacade as Request;
@@ -25,7 +26,7 @@
 		function contact(Request $request) : string
 		{
 			$this->setLayout('main');
-			$contact = new \Jesse\SimplifiedMVC\Http\Models\Contact();
+			$contact = new Contact();
 			if(!empty(Application::$app->session->getValue('authenticated')) && !$request->isPost())
 			{
 				//Utility::dieAndDump(Application::$app);
