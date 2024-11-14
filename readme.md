@@ -5,11 +5,12 @@ The purpose of this repo is to attempt to simplify the mvc framework that was cr
 Requires: 
 PHP 8.2 or greater!
 
-**You will need to include the router (extracted to its own repo)** and install script will be added that will do the pull, but until then
-run the following command::
+**You will need to include the router, and database with queryBuilder (extracted to its own repo)** and install script will be added that will do the pull, but until then
+run the following commands::
 
 ```git
 git clone https://github.com/jf0772256/simpleMVCRouter.git app/Router
+git clone https://github.com/jf0772256/dbQueryBuilder.git app/Database
 ```
 
 Important:: create a .htaccess file in /public/
