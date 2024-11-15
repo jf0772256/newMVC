@@ -39,8 +39,8 @@ This is used for routing and without it the mvc will not work correctly (this ca
 For either Docker or other server the following must be completed::
 
 make sure to generate your application keys - by running:  
-```php jf create:encodingKey <KEYNAME> <KEYLENHTH>```  
-KEYNAME in order to work will be 'ENCODER' or 'SIGNATURE'.  
+```php jf create:encodingKey <KEYNAME> <KEYLENGHTH>```  
+KEYNAME in order to work will be 'ENCODER' or 'SIGNATURE'. _(Hint you need both)_\.  
 KEYLENGTH needs to be a factor of 8...  
 Just then need to copy the output to your .env file for the project.
 
