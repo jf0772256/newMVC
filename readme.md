@@ -2,10 +2,11 @@
 
 The purpose of this repo is to attempt to simplify the mvc framework that was created earlier. 
 
-Requires: 
-PHP 8.2 or greater!
+Requires:   
+PHP 8.2 or greater!  
+Composer  - Must run ```composer install``` to install required packages.
 
-**You will need to include the router, and database with queryBuilder (extracted to their own repo)** and install script will be added that will do the pull, but until then
+**You will need to include the router, and database with queryBuilder (extracted to their own repo)** and install script has been added that will do the pull, but until then
 run the following commands::
 
 ```git
@@ -37,8 +38,11 @@ This is used for routing and without it the mvc will not work correctly (this ca
 
 For either Docker or other server the following must be completed::
 
-make sure to generate your application keys - by running 
-```php bin/commands/genkey.php [-l|--keyLength]=(int) [-n|--keyName]=(string)[ENCODER | SIGNATURE]``` twice on for each... copy to the env file for the project
+make sure to generate your application keys - by running:  
+```php jf create:encodingKey <KEYNAME> <KEYLENHTH>```  
+KEYNAME in order to work will be 'ENCODER' or 'SIGNATURE'.  
+KEYLENGTH needs to be a factor of 8...  
+Just then need to copy the output to your .env file for the project.
 
 -------------------------------------------------------------------
 
