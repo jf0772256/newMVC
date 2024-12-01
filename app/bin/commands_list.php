@@ -14,6 +14,7 @@ return [
 	\Jesse\SimplifiedMVC\bin\commands\SignCommand::class,
 	\Jesse\SimplifiedMVC\bin\commands\GenerateKeyCommand::class,
 	\Jesse\SimplifiedMVC\bin\commands\InstallGitRepos::class,
+	\Jesse\SimplifiedMVC\bin\commands\PhpServe::class,
 ];
 
 ?>
