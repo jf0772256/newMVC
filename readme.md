@@ -6,6 +6,12 @@ Requires:
 PHP 8.2 or greater!  
 Composer  - Must run ```composer install``` to install required packages.
 
+Clone the repo:
+
+```git
+git clone https://github.com/jf0772256/newMVC.git /path/to/dir
+```
+
 **You will need to include the router, and database with queryBuilder (extracted to their own repo)** and install script has been added that will do the pull, but until then
 run the following commands::
 
