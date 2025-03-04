@@ -24,6 +24,9 @@
 			$this->setLayout('main');
 			$params = ['title' => 'Auth Users Page'];
 			foreach ($request->params as $key => $value) $params[$key] = $value;
+			$user = User::find(['id' => $params['id']]) ?? new User();
+			if ($user->firstName === "") $params["id"] = null;
+			$params['model'] = $user;
 			return $this->render('authUserList', $params);
 		}
 		
