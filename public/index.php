@@ -8,9 +8,9 @@
 	$config = require_once "../app/config/config.php";
 	
 	$url = new URL($_SERVER);
-	Request::setUrl($url);
-	
 	$app = new Application($config);
+	$app->request->setUrl($url);
+	
 	
 //	$siteRouter = require_once $config['routesPath'] . '/site.routes.php';
 //	$app->router->use($siteRouter);
