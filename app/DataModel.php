@@ -10,13 +10,13 @@
 		abstract static public function attributes() : array;
 		abstract static public function primaryKey() : string;
 		function labels () : array { return []; }
-		function save(): void
+		function save(): bool
 		{
 			$tableName = static::tableName();
 			$attributes = static::attributes();
 			$params = [];
 			foreach($attributes as $attribute) $params[$attribute] = $this->{$attribute};
-			Application::$app->builder->build(Application::$app->builder->builder()->insert($tableName, $params));
+			return Application::$app->builder->build(Application::$app->builder->builder()->insert($tableName, $params))->rowCount() > 0;
 		}
 		static function findOne (array $where) : PDOStatement
 		{
