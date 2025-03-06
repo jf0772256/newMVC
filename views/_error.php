@@ -10,5 +10,6 @@
 	
 	$this->title = "{$exception->getCode()} Error";
 ?>
-
-<h3 class="text-center"><?= $exception->getCode() ?> - <?= $exception->getMessage() ?></h3>
+<div>
+	<h3 class="text-center display-5 text-muted" style="padding:25% 0;"><?= $exception->getCode() ?> - <?= $exception->getMessage() ?></h3>
+</div>

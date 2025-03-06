@@ -17,6 +17,22 @@
 			$layout = $this->layoutContent($params);
 			return str_replace('{{content}}', $content, $layout);
 		}
+		
+		/**
+		 * Mostly used for specific one use type layouts are expected
+		 * @param string $view view name
+		 * @param string $layout layout name
+		 * @param array  $parameters parameter array
+		 *
+		 * @return string rendered content
+		 */
+		function renderOneTimeViewOnLayout(string $view, string $layout, array $parameters = []) : string
+		{
+			$viewContent = $this->renderOnlyView($view, $parameters);
+			$layoutData = $this->oneTimeLayoutContent($layout, $parameters);
+			return str_replace("{{content}}", $viewContent, $layoutData);
+		}
+		
 		protected function layoutContent (array $params = []) : string
 		{
 			$layout = Application::$app->layout;
@@ -31,6 +47,13 @@
 			foreach ($params as $key => $value) $$key = $value;
 			ob_start();
 			include_once Application::$RootPath . "/views/{$view}.php";
+			return ob_get_clean();
+		}
+		protected function oneTimeLayoutContent (string $layout, array $params = []) : string
+		{
+			foreach ($params as $key => $value) $$key = $value;
+			ob_start();
+			include_once Application::$RootPath . "/views/layouts/{$layout}.php";
 			return ob_get_clean();
 		}
 	}

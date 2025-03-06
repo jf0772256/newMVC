@@ -91,22 +91,22 @@
 			catch (NotFound $e)
 			{
 				$this->response->statusCode($e->getCode());
-				echo $this->view->renderView('_error', ['exception' => $e]);
+				echo $this->view->renderOneTimeViewOnLayout('_error', 'elegant-error', ['exception' => $e]);
 			}
 			catch (Forbidden $f)
 			{
 				$this->response->statusCode($f->getCode());
-				echo $this->view->renderView('_error', ['exception' => $f]);
+				echo $this->view->renderOneTimeViewOnLayout('_error', 'elegant-error', ['exception' => $f]);
 			}
 			catch (BadRequest $b)
 			{
 				$this->response->statusCode($b->getCode());
-				echo  $this->view->renderView('_error', ['exception' => $b]);
+				echo $this->view->renderOneTimeViewOnLayout('_error', 'elegant-error', ['exception' => $b]);
 			}
 			catch (Exception $ex)
 			{
 				$this->response->statusCode($ex->getCode());
-				echo  $this->view->renderView('_error', ['exception' => $ex]);
+				echo $this->view->renderOneTimeViewOnLayout('_error', 'elegant-error', ['exception' => $ex]);
 			}
 		}
 	}
