@@ -29,9 +29,10 @@
 						$className = $rule['class'];
 						$uniqueAttribute = $rule['attribute'] ?? $attribute;
 						$tableName = $className::tableName();
-						$statement = Application::$app->connection->ExecuteQuery("SELECT * FROM {$tableName} WHERE {$uniqueAttribute} = ?", [$value]);
+						// $statement = Application::$app->connection->ExecuteQuery("SELECT * FROM {$tableName} WHERE {$uniqueAttribute} = ?", [$value]);
+						$statement = Application::$app->builder->build(Application::$app->builder()->select($tableName, ['*'])->where((string) $uniqueAttribute, '=', (string) $value));
 						if ($statement->fetchObject()) $this->addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $uniqueAttribute]);
-						$statement->closeCursor();
+						// $statement->closeCursor();
 					}
 				}
 			}
